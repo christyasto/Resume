@@ -12,10 +12,29 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
     const skills = [
-        {}
+        [
+            { skill: "Rhinoceros", lvl: 10 },
+            { skill: "Grasshopper", lvl: 10 },
+            { skill: "AutoCAD", lvl: 8 },
+            { skill: "Adobe Softwares", lvl: 8 }
+        ],
+        [
+            { skill: "C#", lvl: 8 },
+            { skill: "HTML", lvl: 8 },
+            { skill: "Java", lvl: 8 },
+            { skill: "Python", lvl: 6 },
+            { skill: "VBA", lvl: 4 },
+            { skill: "MySQL", lvl: 2 }
+        ],
+        [
+            { skill: "Word, Excel, Powerpoint", lvl: 8 },
+            { skill: "Unity3D", lvl: 3 },
+        ]
+
     ];
     const workexp = [
-        {}
+        { pos: "Research Officer", com: "SUTD International Design Centre", scope: "Quick learning of new bio-material and analysis method (SEM)/n Prototyping & digital fabrication (3D print, laser-cut, CNC)/n Provide detail drawings for manufacturing instructions/n Liaise with an overseas lab for production schedule planning/n Research paper writing", period: "April 2019 - June 2020", loc: "Singapore" },
+        { pos: "Research Officer", com: "SUTD International Design Centre", scope: "Quick learning of new bio-material and analysis method (SEM)/n Prototyping & digital fabrication (3D print, laser-cut, CNC)/n Provide detail drawings for manufacturing instructions/n Liaise with an overseas lab for production schedule planning/n Research paper writing", period: "April 2019 - June 2020", loc: "Singapore" },
     ];
     const compet = [
         {}
