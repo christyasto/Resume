@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="icon.png" />
+
+    <title>A Walk of Life</title>
+
+    <!-- Link the main.css stylesheet -->
+    <link href="/css/main.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <div id="mySidenav" class="sidenav">
+        <a href="#">About</a>
+        <a href="#">Education</a>
+        <a href="#">Skills</a>
+        <a href="#">Work Experience</a>
+        <a href="#">Competitions</a>
+    </div>
+
+    <div id="main" style="height: 100%;">
+        <div class="header" style="height: 100% !important;" id="headerwrap">
+            <div style="height: 43%;"></div>
+            <div class="container">
+                <div class="row centered hiding">
+                    <div class="col-lg-12">
+                        <h1 class="justify-content-center">Christyasto Priyonggo Pambudi</h1>
+                        <h3 class="justify-content-center">Research Officer | Aspiring Developer |
+                            <a href="mailto:christyasto.chito@gmail.com">christyasto.chito @ gmail</a>
+                        </h3>
+                    </div>
+                    <!--/.col-lg-12-->
+                </div>
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </div>
+        <!--/.#headerwrap-->
+
+        <section id="about" name="about"></section>
+        <div class="about">
+            <div class="container desc">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <h5>ABOUT</h5>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>A designer, possessing a good background in CAD and several programming languages, with a strong interest in the interplay between design, fabrication, and computation. A hardworking, forward-looking individual with a desire to
+                            serve. Always looking forward to learning a new trade!</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <p><a href="my-resume.pdf"><i class="icon-file"></i> <sm>DOWNLOAD PDF</sm></a></p>
+                    </div>
+
+                </div>
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </div>
+        <!--/ #intro-->
+
+        <section id="resume" name="resume"></section>
+        <!-- EDUCATION SECTION -->
+        <div class="container desc">
+            <div class="row">
+
+                <div class="col-lg-2">
+                    <h5>EDUCATION</h5>
+                </div>
+                <!-- EDIT: education line 1 -->
+                <div class="col-lg-6">
+                    <p>
+                        <t>Bachelor of Science (Architecture)</t><br/> Singapore University of Technology and Design
+                        <!--<br/><i>Extra info here</i>-->
+                    </p>
+                </div>
+                <div class="col-lg-2">
+                    <p>
+                        <sm>class of 2017</sm><br/>
+                        <imp>
+                            <sm>cum laude</sm>
+                        </imp>
+                    </p>
+                </div>
+            </div>
+            <!--/.row -->
+            <br>
+            <hr>
+        </div>
+        <!--/.container -->
+
+        <!-- WORK SECTION -->
+        <div class="container desc">
+            <div class="row">
+
+                <div class="col-lg-2">
+                    <h5>WORK</h5>
+                </div>
+                <!-- EDIT: work line 1 -->
+                <div class="col-lg-6">
+                    <p class="tight">
+                        <t> Research Officer </t><br/> SUTD International Design Centre <br/>
+                    </p>
+                    <p>
+                        <more>Quick learning of new bio-material and analysis method (SEM)<br/> Prototyping & digital fabrication (3D print, laser-cut, CNC)<br/> Provide detail drawings for manufacturing instructions<br/> Liaise with an overseas lab for production
+                            schedule planning<br/> Research paper writing</more>
+                    </p>
+                </div>
+                <div class="col-lg-2">
+                    <p>
+                        <sm>April 2019 - June 2020<br /> Singapore</sm>
+                    </p>
+                </div>
+            </div>
+            <!--/.row -->
+            <br>
+            <hr>
+        </div>
+        <!--/.container -->
+
+
+        <!-- AWARDS SECTION -->
+        <div class="container desc">
+            <div class="row">
+                <div class="col-lg-2 col-lg-offset-1">
+                    <h5>AWARDS</h5>
+                </div>
+
+                <!-- EDIT: awards line 1-->
+                <div class="col-lg-6">
+                    <p>
+                        <t>International BIM Competition</t><br/> BCA Academy Singapore<br/>
+                    </p>
+                </div>
+                <div class="col-lg-2">
+                    <p>
+                        <sm>September 2016</sm>
+                    </p>
+                </div>
+            </div>
+            <!--/.row -->
+            <br>
+        </div>
+        <!--/.container -->
+    </div>
+    <!--/.main id -->
+
+    <script>
+        var navOpen = false;
+        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            navOpen = true;
+            $('body').addClass('stop-scrolling')
+            setTimeout(() => {
+                $('body').removeClass('stop-scrolling')
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("about").scrollIntoView(true);
+            }, 200);
+
+        }
+
+        /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            navOpen = false;
+            $('body').addClass('stop-scrolling')
+            setTimeout(() => {
+                $('body').removeClass('stop-scrolling')
+            }, 1000);
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 200);
+        }
+
+
+        function scrolling() {
+            doc = $(document).height()
+            hidingbottom = $('.hiding').position().top + $('.hiding').outerHeight(true) // finding the outer height
+            if ($(window).scrollTop() > hidingbottom + 50) {
+                if (!navOpen) {
+                    openNav();
+                }
+            } else {
+                if (navOpen) {
+                    closeNav();
+                }
+            }
+        }
+
+        window.onscroll = function() {
+            scrolling();
+        };
+    </script>
+</body>
+
+</html>
