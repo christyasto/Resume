@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="shortcut icon" href="favicon.ico">
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="apple-touch-icon" href="icon.png" />
 
     <title>A Walk of Life</title>
@@ -53,11 +54,11 @@
                     <div class="col-lg-2">
                         <h5>ABOUT</h5>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-7" style="text-align: justify;">
                         <p>A designer, possessing a good background in CAD and several programming languages, with a strong interest in the interplay between design, fabrication, and computation. A hardworking, forward-looking individual with a desire to
                             serve. Always looking forward to learning a new trade!</p>
                     </div>
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" style="text-align: right;">
                         <p><a href="my-resume.pdf"><i class="icon-file"></i> <sm>DOWNLOAD PDF</sm></a></p>
                     </div>
 
@@ -79,17 +80,17 @@
                     <h5>EDUCATION</h5>
                 </div>
                 <!-- EDIT: education line 1 -->
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <p>
                         <t>Bachelor of Science (Architecture)</t><br/> Singapore University of Technology and Design
                         <!--<br/><i>Extra info here</i>-->
                     </p>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3" style="text-align: right;">
                     <p>
-                        <sm>class of 2017</sm><br/>
+                        <sm>Class of 2017</sm><br/>
                         <imp>
-                            <sm>cum laude</sm>
+                            <sm><i class='fas fa-graduation-cap'></i> cum laude</sm>
                         </imp>
                     </p>
                 </div>
@@ -110,7 +111,7 @@
                     <h5>WORK</h5>
                 </div>
                 <!-- EDIT: work line 1 -->
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <p class="tight">
                         <t> Research Officer </t><br/> SUTD International Design Centre <br/>
                     </p>
@@ -119,9 +120,9 @@
                             schedule planning<br/> Research paper writing</more>
                     </p>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3" style="text-align: right;">
                     <p>
-                        <sm>April 2019 - June 2020<br /> Singapore</sm>
+                        <sm>April 2019 - June 2020<br /><i class='fas fa-map-marker-alt'></i> Singapore</sm>
                     </p>
                 </div>
             </div>
@@ -141,12 +142,12 @@
                 </div>
 
                 <!-- EDIT: awards line 1-->
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <p>
                         <t>International BIM Competition</t><br/> BCA Academy Singapore<br/>
                     </p>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3" style="text-align: right;">
                     <p>
                         <sm>September 2016</sm>
                     </p>
@@ -161,19 +162,21 @@
 
     <script>
         var navOpen = false;
+        var scrol = false;
         /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
         function openNav() {
             document.getElementById("mySidenav").style.width = "250px";
             document.getElementById("main").style.marginLeft = "250px";
             navOpen = true;
-            $('body').addClass('stop-scrolling')
-            setTimeout(() => {
-                $('body').removeClass('stop-scrolling')
-            }, 800);
+            scrol = true;
+            $('body').addClass('stop-scrolling');
             setTimeout(() => {
                 document.getElementById("about").scrollIntoView(true);
             }, 200);
-
+            setTimeout(() => {
+                $('body').removeClass('stop-scrolling');
+                scrol = false;
+            }, 800);
         }
 
         /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -181,27 +184,33 @@
             document.getElementById("mySidenav").style.width = "0";
             document.getElementById("main").style.marginLeft = "0";
             navOpen = false;
+            scrol = true;
             $('body').addClass('stop-scrolling')
-            setTimeout(() => {
-                $('body').removeClass('stop-scrolling')
-            }, 1000);
             setTimeout(() => {
                 window.scrollTo(0, 0);
             }, 200);
+            setTimeout(() => {
+                $('body').removeClass('stop-scrolling');
+                scrol = false;
+            }, 1000);
+
         }
 
 
         function scrolling() {
-            doc = $(document).height()
-            hidingbottom = $('.hiding').position().top + $('.hiding').outerHeight(true) // finding the outer height
-            if ($(window).scrollTop() > hidingbottom + 50) {
-                if (!navOpen) {
+            var topTitle = $(".hiding").offset().top;
+            var topAbt = $("#resume").offset().top;
+            var botScreen = $(window).scrollTop() + $(window).innerHeight();
+            var topScreen = $(window).scrollTop();
+            // window.alert("TopTitle: " + topTitle + "topScreen: " + topScreen + "botScreen: " + botScreen + "botScreen: " + botScreen);
+            if (!navOpen) {
+                if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol) {
                     openNav();
                 }
-            } else {
-                if (navOpen) {
-                    closeNav();
-                }
+
+            } else if (topAbt >= botScreen && topAbt - botScreen < 200 && !scrol) {
+                closeNav();
+
             }
         }
 
