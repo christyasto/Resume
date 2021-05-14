@@ -23,11 +23,11 @@
 <body>
     <div id="mySidenav" class="sidenav">
         <div class="sideContent">
-            <a>About</a>
-            <a>Education</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
             <a>Skills</a>
-            <a>Work Experience</a>
-            <a>Competitions</a>
+            <a href="#workExp">Work Experience</a>
+            <a href="#awards">Competitions</a>
         </div>
     </div>
 
@@ -52,15 +52,20 @@
         <div class="about">
             <div class="container desc">
                 <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-2 col-1">
                         <h5>ABOUT</h5>
                     </div>
                     <div class="col-lg-7" style="text-align: justify;">
                         <p>A designer, possessing a good background in CAD and several programming languages, with a strong interest in the interplay between design, fabrication, and computation. A hardworking, forward-looking individual with a desire to
                             serve. Always looking forward to learning a new trade!</p>
                     </div>
-                    <div class="col-lg-3" style="text-align: right;">
-                        <p><a href="my-resume.pdf"><i class="icon-file"></i> <sm>DOWNLOAD PDF</sm></a></p>
+                    <div class="col-lg-3" style="text-align: right;display: flex !important; align-items: center; justify-content: center;">
+                        <p>
+                            <i class="far fa-file-pdf" style="font-size:x-large;"></i>
+                            <a href="my-resume.pdf">
+                                <sm>DOWNLOAD PDF</sm>
+                            </a>
+                        </p>
                     </div>
 
                 </div>
@@ -71,10 +76,10 @@
         <!--/ #intro-->
 
         <section id="resume" name="resume"></section>
-        <hr>
-        <br>
         <!-- EDUCATION SECTION -->
-        <div class="container desc">
+        <div class="container desc" id="education">
+            <hr>
+            <br>
             <div class="row">
 
                 <div class="col-lg-2">
@@ -105,27 +110,45 @@
         <!--/.container -->
 
         <!-- WORK SECTION -->
-        <div class="container desc">
+        <div class="container desc" id="workExp">
             <div class="row">
 
                 <div class="col-lg-2">
-                    <h5>WORK</h5>
+                    <h5>WORK EXPERIENCE</h5>
                 </div>
                 <!-- EDIT: work line 1 -->
-                <div class="col-lg-7">
-                    <p class="tight">
-                        <t> Research Officer </t><br/> SUTD International Design Centre <br/>
-                    </p>
-                    <p>
-                        <more>Quick learning of new bio-material and analysis method (SEM)<br/> Prototyping & digital fabrication (3D print, laser-cut, CNC)<br/> Provide detail drawings for manufacturing instructions<br/> Liaise with an overseas lab for production
-                            schedule planning<br/> Research paper writing</more>
-                    </p>
-                </div>
-                <div class="col-lg-3" style="text-align: right;">
-                    <p>
-                        <sm>April 2019 - June 2020<br /><i class='fas fa-map-marker-alt'></i> Singapore</sm>
-                    </p>
-                </div>
+                <% var count = 0; %>
+                    <% workexp.forEach(exp => { %>
+                        <% if (count != 0) { %>
+
+                            <div class="col-lg-2"></div>
+                            <% } count++; %>
+                                <div class="col-lg-7">
+                                    <p class="tight">
+                                        <t>
+                                            <%= exp.pos %>
+                                        </t><br/>
+                                        <%= exp.com %><br/>
+                                    </p>
+                                    <p>
+                                        <ul>
+                                            <% for( let i = 0; i < exp.scope.length; i++ ) { %>
+                                                <li>
+                                                    <%= exp.scope[i] %>
+                                                </li>
+                                                <% } %>
+                                        </ul>
+                                    </p>
+                                </div>
+                                <div class="col-lg-3" style="text-align: right;">
+                                    <p>
+                                        <sm>
+                                            <%= exp.period %><br /><i class='fas fa-map-marker-alt'></i>
+                                                <%= exp.loc %>
+                                        </sm>
+                                    </p>
+                                </div>
+                                <% }) %>
             </div>
             <!--/.row -->
             <br>
@@ -136,23 +159,40 @@
 
 
         <!-- AWARDS SECTION -->
-        <div class="container desc">
+        <div class="container desc" id="awards">
             <div class="row">
                 <div class="col-lg-2 col-lg-offset-1">
-                    <h5>AWARDS</h5>
+                    <h5>COMPETITIONS</h5>
                 </div>
+                <% count = 0; %>
+                    <% compet.forEach(compt => { %>
+                        <% if (count != 0) { %>
 
-                <!-- EDIT: awards line 1-->
-                <div class="col-lg-7">
-                    <p>
-                        <t>International BIM Competition</t><br/> BCA Academy Singapore<br/>
-                    </p>
-                </div>
-                <div class="col-lg-3" style="text-align: right;">
-                    <p>
-                        <sm>September 2016</sm>
-                    </p>
-                </div>
+                            <div class="col-lg-2"></div>
+                            <% } count++; %>
+
+                                <!-- EDIT: awards line 1-->
+                                <div class="col-lg-7">
+                                    <p>
+                                        <t>
+                                            <%= compt.name %>
+                                        </t><br/>
+                                        <%= compt.com %><br/>
+                                    </p>
+                                </div>
+                                <div class="col-lg-3" style="text-align: right;">
+                                    <p>
+                                        <sm>
+                                            <%= compt.period %><br />
+                                                <% if (compt.pos != "") { %>
+
+                                                    <i class='fas fa-award'></i>
+                                                    <%= compt.pos %>
+                                                        <% } %>
+                                        </sm>
+                                    </p>
+                                </div>
+                                <% }) %>
             </div>
             <!--/.row -->
             <br>
@@ -166,24 +206,15 @@
         var scrol = false;
         /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
         function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
+            $("#mySidenav").addClass("openNavSide");
+            $("#main").addClass("openNavMain");
             navOpen = true;
-            scrol = true;
-            $('body').addClass('stop-scrolling');
-            setTimeout(() => {
-                document.getElementById("about").scrollIntoView(true);
-            }, 200);
-            setTimeout(() => {
-                $('body').removeClass('stop-scrolling');
-                scrol = false;
-            }, 800);
         }
 
         /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
         function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
+            $("#mySidenav").removeClass("openNavSide");
+            $("#main").removeClass("openNavMain");
             navOpen = false;
             scrol = true;
             $('body').addClass('stop-scrolling')
@@ -203,13 +234,26 @@
             var topAbt = $("#resume").offset().top;
             var botScreen = $(window).scrollTop() + $(window).innerHeight();
             var topScreen = $(window).scrollTop();
-            // window.alert("TopTitle: " + topTitle + "topScreen: " + topScreen + "botScreen: " + botScreen + "botScreen: " + botScreen);
             if (!navOpen) {
+                // window.alert("TopTitle: " + topTitle + "topScreen: " + topScreen + "topAbt: " + topAbt + "botScreen: " + botScreen);
                 if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol) {
+                    openNav();
+                    scrol = true;
+                    $('body').addClass('stop-scrolling');
+                    setTimeout(() => {
+                        document.getElementById("about").scrollIntoView(true);
+                    }, 200);
+                    setTimeout(() => {
+                        $('body').removeClass('stop-scrolling');
+                        scrol = false;
+                    }, 800);
+
+                } else if (topAbt <= botScreen && !scrol) {
                     openNav();
                 }
 
-            } else if (topAbt >= botScreen && topAbt - botScreen < 200 && !scrol) {
+
+            } else if (topAbt >= botScreen && !scrol) {
                 closeNav();
 
             }

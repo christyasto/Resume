@@ -112,7 +112,7 @@ h4,
 
 h5,
 .h5 {
-    font-size: 1.25rem;
+    font-size: 1.1rem !important;
 }
 
 h6,
@@ -124,7 +124,7 @@ hr {
     margin-top: 1rem;
     margin-bottom: 1rem;
     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.3) !important;
 }
 
 .container,
@@ -219,6 +219,10 @@ section {
     }
 }
 
+t {
+    font-weight: bold !important;
+}
+
 .footer {
     text-align: center;
     font-size: 0.9rem;
@@ -282,6 +286,24 @@ section {
     overflow: hidden;
 }
 
+@media (max-width: 600px) {
+    .openNavSide {
+        width: 150px !important;
+    }
+    .openNavMain {
+        margin-left: 150px !important;
+    }
+}
+
+@media (min-width: 600px) {
+    .openNavSide {
+        width: 250px !important;
+    }
+    .openNavMain {
+        margin-left: 250px !important;
+    }
+}
+
 
 /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
 
@@ -293,7 +315,7 @@ section {
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
     .sidenav {
         padding-top: 15px;
     }

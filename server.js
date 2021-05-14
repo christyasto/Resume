@@ -33,11 +33,12 @@ app.get('/', function(req, res) {
 
     ];
     const workexp = [
-        { pos: "Research Officer", com: "SUTD International Design Centre", scope: "Quick learning of new bio-material and analysis method (SEM)/n Prototyping & digital fabrication (3D print, laser-cut, CNC)/n Provide detail drawings for manufacturing instructions/n Liaise with an overseas lab for production schedule planning/n Research paper writing", period: "April 2019 - June 2020", loc: "Singapore" },
-        { pos: "Research Officer", com: "SUTD International Design Centre", scope: "Quick learning of new bio-material and analysis method (SEM)/n Prototyping & digital fabrication (3D print, laser-cut, CNC)/n Provide detail drawings for manufacturing instructions/n Liaise with an overseas lab for production schedule planning/n Research paper writing", period: "April 2019 - June 2020", loc: "Singapore" },
+        { pos: "Research Officer", com: "SUTD International Design Centre", scope: ["Quick learning of new bio-material and analysis method (SEM)", "Prototyping & digital fabrication (3D print, laser-cut, CNC)", "Provide detail drawings for manufacturing instructions", "Liaise with an overseas lab for production schedule planning", "Research paper writing"], period: "April 2019 - June 2020", loc: "Singapore" },
+        { pos: "Research Officer", com: "SUTD International Design Centre", scope: ["Quick learning of new bio-material and analysis method (SEM)", "Prototyping & digital fabrication (3D print, laser-cut, CNC)", "Provide detail drawings for manufacturing instructions", "Liaise with an overseas lab for production schedule planning", "Research paper writing"], period: "April 2019 - June 2020", loc: "Singapore" },
     ];
     const compet = [
-        { meh: "food" }
+        { name: "International BIM Competition", com: "BCA Academy Singapore", period: "September 2016", pos: "1st Place" },
+        { name: "International BIM Competition", com: "BCA Academy Singapore", period: "September 2016", pos: "" }
     ];
     res.render('index', { skills, workexp, compet });
 })
