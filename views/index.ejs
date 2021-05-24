@@ -5,9 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="shortcut icon" href="favicon.ico">
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="apple-touch-icon" href="icon.png" />
 
     <title>A Walk of Life</title>
 
@@ -22,12 +20,44 @@
 
 <body>
     <div id="mySidenav" class="sidenav">
-        <div class="sideContent">
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a>Skills</a>
-            <a href="#workExp">Work Experience</a>
-            <a href="#awards">Competitions</a>
+        <div class="posWrapper hidden">
+            <div><img class="portrait" src="/src/profile.jpg"></div>
+            <div class="skills col-lg-2">
+                <h5>PROFICIENCIES</h5>
+                <div class="skillType">
+
+                    <% for( let i = 0; i < skills.length; i++ ) { %>
+                        <h6>
+                            <% if(i == 0){ %>Programming
+                                <% } else if (i==1) { %>CAD
+                                    <% } else { %>Others
+                                        <%}%>
+                        </h6>
+                        <% skills[i].forEach(skillSet => { %>
+                            <div class="skill">
+                                <%=skillSet.skill%><br/>
+                                    <% for( let j = 0; j < 10; j++ ) { %>
+                                        <% if (j==0) { %><i class="fas fa-circle"></i>
+                                            <% } else if (j < skillSet.lvl) { %> <i class="fas fa-circle"></i>
+                                                <% } else { %><i class="far fa-circle"></i>
+                                                    <% } %>
+
+                                                        <% }%>
+                            </div>
+                            <%}) %>
+                                <% } %>
+                </div>
+
+            </div>
+
+            <div class="navigCont">
+                <div class="sideContent">
+                    <a class="navigText abt" href="#about"><i class="fas fa-quote-left"></i> <i class="fas fa-quote-right"></i></a>
+                    <a class="navigText" href="#education"><i class="fas fa-user-graduate"></i></a>
+                    <a class="navigText" href="#workExp"><i class="fas fa-briefcase"></i></a>
+                    <a class="navigText" href="#awards"><i class="fas fa-trophy"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -209,16 +239,20 @@
             $("#mySidenav").addClass("openNavSide");
             $("#main").addClass("openNavMain");
             navOpen = true;
+            setTimeout(() => {
+                $(".posWrapper").removeClass("hidden");
+            }, 100);
         }
 
         /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
         function closeNav() {
-            $("#mySidenav").removeClass("openNavSide");
-            $("#main").removeClass("openNavMain");
+            $(".posWrapper").addClass("hidden");
             navOpen = false;
             scrol = true;
             $('body').addClass('stop-scrolling')
             setTimeout(() => {
+                $("#mySidenav").removeClass("openNavSide");
+                $("#main").removeClass("openNavMain");
                 window.scrollTo(0, 0);
             }, 200);
             setTimeout(() => {

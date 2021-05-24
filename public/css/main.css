@@ -9,6 +9,7 @@ html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    scroll-behavior: smooth;
 }
 
 article,
@@ -229,34 +230,155 @@ t {
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+
+/* Scrollbar */
+
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 7px;
+    left: 0;
+}
+
+@media (max-width: 600px) {
+     ::-webkit-scrollbar {
+        width: 5px;
+    }
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
+    background: rgba(17, 17, 17, 0);
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    height: 20px;
+}
+
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/* Sidebar */
+
 .sidenav {
     height: 100%;
-    /* 100% Full-height */
     width: 0;
-    /* 0 width - change this with JavaScript */
     position: fixed;
-    /* Stay in place */
     z-index: 1;
-    /* Stay on top */
     top: 0;
-    /* Stay at the top */
     left: 0;
     background-color: #111;
-    /* Black*/
     overflow-x: hidden;
-    /* Disable horizontal scroll */
-    padding-top: 60px;
-    /* Place content 60px from the top */
     transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sideContent {
+    text-align: center;
+    width: 80%;
+    display: inline-flex;
+    margin: auto;
+}
+
+.navigText {
+    width: 25% !important;
+}
+
+.posWrapper {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 1s;
+    opacity: 1;
+}
+
+.hidden {
+    transition: 0.5s;
+    opacity: 0 !important;
+}
+
+.navigCont {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    padding-bottom: 10px;
+    background-color: #111;
+}
+
+.abt {
+    align-items: center;
+    font-size: 15px !important;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.skillType {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    direction: rtl;
+}
+
+.skills {
+    height: 50%;
+}
+
+.skills h5 {
+    color: #bbbbbb;
+    text-align: center;
+}
+
+.skillType {
+    padding-left: 25px;
+}
+
+.skills h6 {
+    color: #949494;
+    line-height: 1.3 !important;
+    margin: 10px 0px 0px 0px !important;
+}
+
+.skill {
+    color: #949494;
+    line-height: 1.35;
+    font-size: small;
+}
+
+.skill i {
+    color: cornflowerblue;
+    font-size: 10px;
+}
+
+.skill .far {
+    color: #747474;
+}
+
+.sidenav .col-lg-2 {
+    max-width: unset !important;
 }
 
 
 /* The navigation menu links */
 
 .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
+    text-decoration: none !important;
     font-size: 25px;
     color: #818181;
     display: block;
@@ -293,6 +415,30 @@ t {
     .openNavMain {
         margin-left: 150px !important;
     }
+    .portrait {
+        width: 100px;
+        height: 100px;
+        margin: 10px 25px;
+        border-radius: 50%;
+    }
+    .skills h5 {
+        color: #979797;
+        text-align: center;
+        font-size: small !important;
+    }
+    .skillType {
+        padding-left: unset;
+    }
+    .skills h6 {
+        color: #818181;
+        font-size: small !important;
+    }
+    .skill {
+        line-height: 1.2 !important;
+    }
+    .skill i {
+        font-size: 7px !important;
+    }
 }
 
 @media (min-width: 600px) {
@@ -301,6 +447,12 @@ t {
     }
     .openNavMain {
         margin-left: 250px !important;
+    }
+    .portrait {
+        width: 160px;
+        height: 160px;
+        margin: 20px 45px;
+        border-radius: 50%;
     }
 }
 
@@ -321,5 +473,8 @@ t {
     }
     .sidenav a {
         font-size: 18px;
+    }
+    .abt {
+        font-size: 10px !important;
     }
 }

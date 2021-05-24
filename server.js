@@ -13,12 +13,6 @@ app.set('view engine', 'ejs');
 app.get('/', function(req, res) {
     const skills = [
         [
-            { skill: "Rhinoceros", lvl: 10 },
-            { skill: "Grasshopper", lvl: 10 },
-            { skill: "AutoCAD", lvl: 8 },
-            { skill: "Adobe Softwares", lvl: 8 }
-        ],
-        [
             { skill: "C#", lvl: 8 },
             { skill: "HTML", lvl: 8 },
             { skill: "Java", lvl: 8 },
@@ -27,12 +21,20 @@ app.get('/', function(req, res) {
             { skill: "MySQL", lvl: 2 }
         ],
         [
+            { skill: "Rhinoceros", lvl: 10 },
+            { skill: "Grasshopper", lvl: 10 },
+            { skill: "AutoCAD", lvl: 8 },
+            { skill: "Adobe Softwares", lvl: 8 }
+        ],
+        [
             { skill: "Word, Excel, Powerpoint", lvl: 8 },
             { skill: "Unity3D", lvl: 3 },
         ]
 
     ];
     const workexp = [
+        { pos: "Research Officer", com: "SUTD International Design Centre", scope: ["Quick learning of new bio-material and analysis method (SEM)", "Prototyping & digital fabrication (3D print, laser-cut, CNC)", "Provide detail drawings for manufacturing instructions", "Liaise with an overseas lab for production schedule planning", "Research paper writing"], period: "April 2019 - June 2020", loc: "Singapore" },
+        { pos: "Research Officer", com: "SUTD International Design Centre", scope: ["Quick learning of new bio-material and analysis method (SEM)", "Prototyping & digital fabrication (3D print, laser-cut, CNC)", "Provide detail drawings for manufacturing instructions", "Liaise with an overseas lab for production schedule planning", "Research paper writing"], period: "April 2019 - June 2020", loc: "Singapore" },
         { pos: "Research Officer", com: "SUTD International Design Centre", scope: ["Quick learning of new bio-material and analysis method (SEM)", "Prototyping & digital fabrication (3D print, laser-cut, CNC)", "Provide detail drawings for manufacturing instructions", "Liaise with an overseas lab for production schedule planning", "Research paper writing"], period: "April 2019 - June 2020", loc: "Singapore" },
         { pos: "Research Officer", com: "SUTD International Design Centre", scope: ["Quick learning of new bio-material and analysis method (SEM)", "Prototyping & digital fabrication (3D print, laser-cut, CNC)", "Provide detail drawings for manufacturing instructions", "Liaise with an overseas lab for production schedule planning", "Research paper writing"], period: "April 2019 - June 2020", loc: "Singapore" },
     ];
