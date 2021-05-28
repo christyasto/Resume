@@ -338,6 +338,7 @@ t {
 
 .skills {
     height: 50%;
+    direction: ltr !important;
 }
 
 .skills h5 {
@@ -372,6 +373,10 @@ t {
 
 .sidenav .col-lg-2 {
     max-width: unset !important;
+}
+
+.Hover {
+    transition: 0.2s;
 }
 
 

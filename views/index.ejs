@@ -37,12 +37,11 @@
                             <div class="skill">
                                 <%=skillSet.skill%><br/>
                                     <% for( let j = 0; j < 10; j++ ) { %>
-                                        <% if (j==0) { %><i class="fas fa-circle"></i>
-                                            <% } else if (j < skillSet.lvl) { %> <i class="fas fa-circle"></i>
-                                                <% } else { %><i class="far fa-circle"></i>
-                                                    <% } %>
+                                        <% if (j < 10 - skillSet.lvl) { %> <i class="far fa-circle"></i>
+                                            <% } else { %><i class="fas fa-circle"></i>
+                                                <% } %>
 
-                                                        <% }%>
+                                                    <% }%>
                             </div>
                             <%}) %>
                                 <% } %>
@@ -152,8 +151,8 @@
                         <% if (count != 0) { %>
 
                             <div class="col-lg-2"></div>
-                            <% } count++; %>
-                                <div class="col-lg-7">
+                            <% } %>
+                                <div class="col-lg-7 HoverExp-<%=count%> Hover">
                                     <p class="tight">
                                         <t>
                                             <%= exp.pos %>
@@ -170,7 +169,7 @@
                                         </ul>
                                     </p>
                                 </div>
-                                <div class="col-lg-3" style="text-align: right;">
+                                <div class="col-lg-3 HoverExp-<%=count%> Hover" style="text-align: right;">
                                     <p>
                                         <sm>
                                             <%= exp.period %><br /><i class='fas fa-map-marker-alt'></i>
@@ -178,7 +177,7 @@
                                         </sm>
                                     </p>
                                 </div>
-                                <% }) %>
+                                <% count++; }) %>
             </div>
             <!--/.row -->
             <br>
@@ -199,10 +198,10 @@
                         <% if (count != 0) { %>
 
                             <div class="col-lg-2"></div>
-                            <% } count++; %>
+                            <% } %>
 
                                 <!-- EDIT: awards line 1-->
-                                <div class="col-lg-7">
+                                <div class="col-lg-7 HoverComp-<%=count%> Hover">
                                     <p>
                                         <t>
                                             <%= compt.name %>
@@ -210,7 +209,7 @@
                                         <%= compt.com %><br/>
                                     </p>
                                 </div>
-                                <div class="col-lg-3" style="text-align: right;">
+                                <div class="col-lg-3 HoverComp-<%=count%> Hover" style="text-align: right;">
                                     <p>
                                         <sm>
                                             <%= compt.period %><br />
@@ -222,7 +221,7 @@
                                         </sm>
                                     </p>
                                 </div>
-                                <% }) %>
+                                <% count++; }) %>
             </div>
             <!--/.row -->
             <br>
@@ -262,6 +261,13 @@
 
         }
 
+        $(".Hover").hover(function() {
+            $("." + $(this).attr('class').split(" ")[1].toString()).css("background-color", "#cbcbcb");
+            $("." + $(this).attr('class').split(" ")[1].toString()).css("font-weight", "500");
+        }, function() {
+            $("." + $(this).attr('class').split(" ")[1].toString()).css("background-color", "unset");
+            $("." + $(this).attr('class').split(" ")[1].toString()).css("font-weight", "unset");
+        });
 
         function scrolling() {
             var topTitle = $(".hiding").offset().top;
