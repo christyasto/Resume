@@ -25,16 +25,14 @@
             <div class="skills col-lg-2">
                 <h5>PROFICIENCIES</h5>
                 <div class="skillType">
-
+                    <div class="skillHeader">
+                        <i class="fas fa-greater-than" onclick="headerClick(1);"></i>
+                        <h6 class="sHeader Head0">Programming</h6>
+                        <i class="fas fa-less-than" style="text-align: right;" onclick="headerClick(-1);"></i>
+                    </div>
                     <% for( let i = 0; i < skills.length; i++ ) { %>
-                        <h6>
-                            <% if(i == 0){ %>Programming
-                                <% } else if (i==1) { %>CAD
-                                    <% } else { %>Others
-                                        <%}%>
-                        </h6>
                         <% skills[i].forEach(skillSet => { %>
-                            <div class="skill">
+                            <div class="skill type<%=i%> <%if(i!=0){%>hideskill<%}%>">
                                 <%=skillSet.skill%><br/>
                                     <% for( let j = 0; j < 10; j++ ) { %>
                                         <% if (j < 10 - skillSet.lvl) { %> <i class="far fa-circle"></i>
@@ -42,6 +40,7 @@
                                                 <% } %>
 
                                                     <% }%>
+
                             </div>
                             <%}) %>
                                 <% } %>
@@ -302,6 +301,30 @@
         window.onscroll = function() {
             scrolling();
         };
+
+        function headerClick(index) {
+            var Type = $(".sHeader").attr("class").split(/\s+/)[1].slice(-1);
+            var goTo = parseInt(Type) + parseInt(index);
+            if (goTo > 2) {
+                goTo = 0
+            } else if (goTo < 0) {
+                goTo = 2;
+            }
+            switch (goTo) {
+                case 0:
+                    $(".sHeader").text("Programming");
+                    break;
+                case 1:
+                    $(".sHeader").text("CAD");
+                    break;
+                case 2:
+                    $(".sHeader").text("Others");
+                    break;
+            }
+            $(".sHeader").removeClass("Head" + Type).addClass("Head" + goTo);
+            $(".type" + Type).addClass("hideskill");
+            $(".type" + goTo).removeClass("hideskill");
+        }
     </script>
 </body>
 

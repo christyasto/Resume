@@ -312,6 +312,10 @@ t {
     opacity: 0 !important;
 }
 
+.hideskill {
+    display: none;
+}
+
 .navigCont {
     height: 50px;
     width: 100%;
@@ -330,10 +334,9 @@ t {
 }
 
 .skillType {
-    overflow-y: auto;
-    overflow-x: hidden;
     height: 100%;
     direction: rtl;
+    width: 100% !important;
 }
 
 .skills {
@@ -346,10 +349,6 @@ t {
     text-align: center;
 }
 
-.skillType {
-    padding-left: 25px;
-}
-
 .skills h6 {
     color: #949494;
     line-height: 1.3 !important;
@@ -360,6 +359,8 @@ t {
     color: #949494;
     line-height: 1.35;
     font-size: small;
+    margin: auto;
+    width: 140px;
 }
 
 .skill i {
@@ -371,12 +372,39 @@ t {
     color: #747474;
 }
 
+.skillHeader {
+    display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.skillHeader i {
+    flex-grow: 1;
+    width: fit-content !important;
+    height: fit-content !important;
+    margin: auto;
+    color: #bbbbbb;
+}
+
+.skillHeader i:hover {
+    color: cornflowerblue;
+}
+
+.skillHeader h6 {
+    text-align: center;
+    width: 150px;
+    height: fit-content !important;
+    margin: auto !important;
+}
+
 .sidenav .col-lg-2 {
     max-width: unset !important;
 }
 
 .Hover {
-    transition: 0.2s;
+    transition: background-color 0.2s;
 }
 
 
@@ -437,9 +465,11 @@ t {
     .skills h6 {
         color: #818181;
         font-size: small !important;
+        text-align: center !important;
     }
     .skill {
         line-height: 1.2 !important;
+        width: 105px !important;
     }
     .skill i {
         font-size: 7px !important;
