@@ -312,6 +312,11 @@ t {
     opacity: 0 !important;
 }
 
+.flatside {
+    transition: ease-out 0.4s !important;
+    opacity: 0 !important;
+}
+
 .hideskill {
     display: none;
 }
