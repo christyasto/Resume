@@ -19,21 +19,21 @@
 </head>
 
 <body style="position: relative;">
-    <div style="position: absolute; height: 100%;"><img class="moneyshot" src="/src/Portraitdarker.png" style="height:100%; transition: ease-in 1s"></div>
+  <div style="position: absolute; height: 100%;"><img class="moneyshot" src="/src/Portraitdarker.png" style="height:100%; transition: ease-in 1s"></div>
   <div id="mySidenav" class="sidenav">
     <div class="posWrapper hidden">
       <div><img class="portrait" src="/src/profile.jpg"></div>
       <div class="skills col-lg-2">
-        <h5>PROFICIENCIES</h5>
+        <h5 style="margin-bottom: 20px">PROFICIENCIES</h5>
         <div class="skillType">
           <div class="skillHeader">
             <i class="fas fa-greater-than" onclick="headerClick(1);"></i>
-            <h6 class="sHeader Head0">Programming</h6>
+            <h6 style="transition: opacity 0.15s;" class="sHeader Head0">Programming</h6>
             <i class="fas fa-less-than" style="text-align: right;" onclick="headerClick(-1);"></i>
           </div>
           <% for( let i = 0; i < skills.length; i++ ) { %>
           <% skills[i].forEach(skillSet => { %>
-          <div class="skill type<%=i%> <%if(i!=0){%>hideskill<%}%>">
+          <div style="transition: opacity 1s;" class="skill type<%=i%> <%if(i!=0){%>hideskill<%}%>">
                                 <%=skillSet.skill%><br/>
                                     <% for( let j = 0; j < 10; j++ ) { %>
                                         <% if (j < 10 - skillSet.lvl) { %> <i class=" far fa-circle"></i>
@@ -89,22 +89,26 @@
               serve. Always looking forward to learning a new trade!</p>
           </div>
           <div class="col-lg-3" style="text-align: right;display: flex !important; align-items: center; justify-content: center;">
-            <p>
+            <p class="contacts">
+              <a  href="my-resume.pdf" style="">
               <i class="far fa-file-pdf" style="font-size:x-large;"></i>
-              <a href="my-resume.pdf">
-                <sm>DOWNLOAD PDF</sm>
+                DOWNLOAD PDF
               </a>
             </p>
           </div>
-
         </div>
         <!--/.row-->
       </div>
       <!--/.container-->
     </div>
     <!--/ #intro-->
-
-    <section id="resume" name="resume"></section>
+    <section id="resume" name="resume">
+      <div class="contacts" style="display: flex; width: 100%; text-align: center;">
+        <div style="flex: 100%; justify-content: space-around; display: inline;"><a href="mailto:christyasto.chito@gmail.com" target="_blank" style="display: flex; justify-content: center;"><i class="far fa-envelope"></i><span>christyasto.chito @ gmail</span></a></div>
+        <div style="flex: 100%; justify-content: space-around; display: inline;"><a href="https://bit.ly/3FHrQKk" target="_blank" style="display: flex; justify-content: center;"><i class="fab fa-git-alt"></i><span>christyasto</span></a></div>
+        <div style="flex: 100%; justify-content: space-around; display: inline;"><a href="https://bit.ly/3AufBwV" target="_blank" style="display: flex; justify-content: center;"><i class="fab fa-instagram"></i><span>isyasowiyongo.cpp</span></a></div>
+      </div>
+    </section>
     <!-- EDUCATION SECTION -->
     <div class="container desc" id="education">
       <hr>
@@ -313,17 +317,21 @@
       } else if (goTo < 0) {
         goTo = 2;
       }
-      switch (goTo) {
-        case 0:
-          $(".sHeader").text("Programming");
-          break;
-        case 1:
-          $(".sHeader").text("CAD");
-          break;
-        case 2:
-          $(".sHeader").text("Others");
-          break;
-      }
+      $(".sHeader").css("opacity", 0);
+      setTimeout(() => {
+        switch (goTo) {
+          case 0:
+            $(".sHeader").text("Programming");
+            break;
+          case 1:
+            $(".sHeader").text("CAD");
+            break;
+          case 2:
+            $(".sHeader").text("Others");
+            break;
+        }
+        $(".sHeader").css("opacity", "unset");
+      }, 150);
       $(".sHeader").removeClass("Head" + Type).addClass("Head" + goTo);
       $(".type" + Type).addClass("hideskill");
       $(".type" + goTo).removeClass("hideskill");

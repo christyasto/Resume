@@ -237,13 +237,13 @@ t {
 /* width */
 
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 10px;
     left: 0;
 }
 
 @media (max-width: 600px) {
      ::-webkit-scrollbar {
-        width: 5px;
+        width: 7px;
     }
 }
 
@@ -251,7 +251,8 @@ t {
 /* Track */
 
  ::-webkit-scrollbar-track {
-    background: rgba(17, 17, 17, 0);
+    background: rgba(255, 255, 255, 0);
+    opacity: 0 !important;
 }
 
 
@@ -318,7 +319,9 @@ t {
 }
 
 .hideskill {
-    display: none;
+    height: 0 !important;
+    opacity: 0 !important;
+    transition: unset !important;
 }
 
 .navigCont {
@@ -336,6 +339,22 @@ t {
     font-size: 15px !important;
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.contacts a{
+    text-decoration: none !important;
+    color: unset;
+}
+
+.contacts i{
+    font-size: xx-large;
+    margin-right: 5pt !important;
+}
+
+.contacts span{
+    line-height: 1.75;
+    margin: auto 0 !important;
+    vertical-align: middle;
 }
 
 .skillType {
