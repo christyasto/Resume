@@ -1,16 +1,29 @@
 var express = require('express');
 var cors = require('cors');
 var path = require('path');
+const mysql = require('mysql');
 
 var app = express();
+
+const port = process.env.PORT || 3000
 
 app.use(cors());
 app.use(express.static(__dirname + '/public'));
 
+// Connection Details
+const connection = mysql.createConnection({
+    host: 'eu-cdbr-west-01.cleardb.com',
+    user: 'b59c6fb590b2f5',
+    password: 'b99ceae5',
+    database: 'heroku_a191ac8198c99b6'
+})
+
+// View engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.get('/', function(req, res) {
+// Render Home Page
+app.get('/', function (req, res) {
     const skills = [
         [
             { skill: "C#", lvl: 8 },
@@ -51,9 +64,16 @@ app.get('/', function(req, res) {
         { name: "BCA Productivity Challenge", com: "BCA Academy Singapore", period: "September 2016", pos: "" },
         { name: "International BIM Competition", com: "BCA Academy Singapore", period: "September 2016", pos: "" }
     ];
-    res.render('index', { skills, workexp, compet });
+
+    connection.query('SELECT * FROM user WHERE id = "1"', (error, rows) => {
+        if (error) throw error;
+        if (!error) {
+            console.log(rows);
+            res.render('index', { skills, workexp, compet });
+        }
+    })
+
 })
 
-app.listen(8000, function() {
-    console.log("heard on 8000");
-})
+app.listen(port)
+console.log(`Heard on port ${port}`);
