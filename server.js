@@ -68,7 +68,6 @@ app.get('/', function (req, res) {
     connection.query('SELECT * FROM user WHERE id = "1"', (error, rows) => {
         if (error) throw error;
         if (!error) {
-            console.log(rows);
             res.render('index', { skills, workexp, compet });
         }
     })
