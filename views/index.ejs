@@ -216,7 +216,7 @@
           <p>
             <sm>
               <%= compt.period %><br />
-              <% if (compt.position != "") { %>
+              <% if (compt.position != "" && compt.position != null) { %>
 
               <i class='fas fa-award'></i>
               <%= compt.position %>
