@@ -465,7 +465,12 @@ t {
     overflow: hidden;
 }
 
+/* Phone Screen */
+
 @media (max-width: 600px) {
+    .contacts{
+        display: unset !important;
+    }
     .openNavSide {
         width: 150px !important;
     }
@@ -481,14 +486,14 @@ t {
     .skills h5 {
         color: #979797;
         text-align: center;
-        font-size: small !important;
+        font-size: 12px !important;
     }
     .skillType {
         padding-left: unset;
     }
     .skills h6 {
         color: #818181;
-        font-size: small !important;
+        font-size: 12px !important;
         text-align: center !important;
     }
     .skill {
@@ -496,7 +501,7 @@ t {
         width: 105px !important;
     }
     .skill i {
-        font-size: 7px !important;
+        font-size: 6px !important;
     }
 }
 

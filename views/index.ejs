@@ -10,7 +10,7 @@
   <title>A Walk of Life</title>
 
   <!-- Link the main.css stylesheet -->
-  
+
   <link href="/css/main.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -32,20 +32,16 @@
             <h6 style="transition: opacity 0.15s;" class="sHeader Head0">Programming</h6>
             <i class="fas fa-less-than" style="text-align: right;" onclick="headerClick(-1);"></i>
           </div>
-          <% for( let i = 0; i < skills.length; i++ ) { %>
-          <% skills[i].forEach(skillSet => { %>
-          <div style="transition: opacity 1s;" class="skill type<%=i%> <%if(i!=0){%>hideskill<%}%>">
-                                <%=skillSet.skill%><br/>
+          <% skills.forEach(skillSet => { %>
+          <div style="transition: opacity 1s;" class="skill type<%=skillSet.category - 1%> <%if(skillSet.category - 1!=0){%>hideskill<%}%>">
+                                <%=skillSet.desc%><br/>
                                     <% for( let j = 0; j < 10; j++ ) { %>
                                         <% if (j < 10 - skillSet.lvl) { %> <i class=" far fa-circle"></i>
             <% } else { %><i class="fas fa-circle"></i>
             <% } %>
-
             <% }%>
-
           </div>
           <%}) %>
-          <% } %>
         </div>
 
       </div>
@@ -92,7 +88,7 @@
           <div class="col-lg-3" style="text-align: right;display: flex !important; align-items: center; justify-content: center;">
             <p class="contacts">
               <a download href="/src/Christyasto-Resume.pdf">
-              <i class="far fa-file-pdf" style="font-size:x-large;"></i>
+                <i class="far fa-file-pdf" style="font-size:x-large;"></i>
                 DOWNLOAD PDF
               </a>
             </p>
@@ -152,7 +148,7 @@
         </div>
         <!-- EDIT: work line 1 -->
         <% var count = 0; %>
-        <% workexp.forEach(exp => { %>
+        <% workexp.slice().reverse().forEach(exp => { %>
         <% if (count != 0) { %>
 
         <div class="col-lg-2"></div>
@@ -160,16 +156,18 @@
         <div class="col-lg-7 HoverExp-<%=count%> Hover">
           <p class="tight">
             <t>
-              <%= exp.pos %>
+              <%= exp.position %>
             </t><br />
-            <%= exp.com %><br />
+            <%= exp.company %><br />
           </p>
           <p>
           <ul>
-            <% for( let i = 0; i < exp.scope.length; i++ ) { %>
+            <% checker = false; for(let i = 0; i < jobscope.length; i++) { %> 
+            <% if(count+1 == jobscope[i].id_job) {%>
             <li>
-              <%= exp.scope[i] %>
+              <%= jobscope[i].scope %>
             </li>
+            <% checker = true; } else if (checker && count+1 != jobscope[i].id_job) { break; } %>
             <% } %>
           </ul>
           </p>
@@ -178,7 +176,7 @@
           <p>
             <sm>
               <%= exp.period %><br /><i class='fas fa-map-marker-alt'></i>
-              <%= exp.loc %>
+              <%= exp.location %>
             </sm>
           </p>
         </div>
@@ -199,7 +197,7 @@
           <h5>COMPETITIONS</h5>
         </div>
         <% count = 0; %>
-        <% compet.forEach(compt => { %>
+        <% compet.slice().reverse().forEach(compt => { %>
         <% if (count != 0) { %>
 
         <div class="col-lg-2"></div>
@@ -211,17 +209,17 @@
             <t>
               <%= compt.name %>
             </t><br />
-            <%= compt.com %><br />
+            <%= compt.company %><br />
           </p>
         </div>
         <div class="col-lg-3 HoverComp-<%=count%> Hover" style="text-align: right;">
           <p>
             <sm>
               <%= compt.period %><br />
-              <% if (compt.pos != "") { %>
+              <% if (compt.position != "") { %>
 
               <i class='fas fa-award'></i>
-              <%= compt.pos %>
+              <%= compt.position %>
               <% } %>
             </sm>
           </p>
