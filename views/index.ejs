@@ -57,7 +57,7 @@
     </div>
   </div>
 
-  <div id="main" style="height: 100%;">
+  <div id="main" style="height: 100%;" onclick="toggleSidebar();">
     <div class="header" style="height: 100% !important;" id="headerwrap">
       <div style="height: 43%;"></div>
       <div class="container">
@@ -256,7 +256,9 @@
       setTimeout(() => {
         $("#mySidenav").removeClass("openNavSide");
         $("#main").removeClass("openNavMain");
+        if($(window).width()>450){
         window.scrollTo(0, 0);
+        }
       }, 200);
       setTimeout(() => {
         $('body').removeClass('stop-scrolling');
@@ -281,7 +283,7 @@
       var topScreen = $(window).scrollTop();
       if (!navOpen) {
         // window.alert("TopTitle: " + topTitle + "topScreen: " + topScreen + "topAbt: " + topAbt + "botScreen: " + botScreen);
-        if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol) {
+        if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol && $(window).width()>450 ) {
           openNav();
           scrol = true;
           $('body').addClass('stop-scrolling');
@@ -293,12 +295,12 @@
             scrol = false;
           }, 800);
 
-        } else if (topAbt <= botScreen && !scrol) {
+        } else if (topAbt <= botScreen && !scrol && $(window).width()>450 ) {
           openNav();
         }
 
 
-      } else if (topAbt >= botScreen && !scrol) {
+      } else if (topAbt >= botScreen && !scrol && $(window).width()>450 ) {
         closeNav();
 
       }
@@ -334,6 +336,10 @@
       $(".sHeader").removeClass("Head" + Type).addClass("Head" + goTo);
       $(".type" + Type).addClass("hideskill");
       $(".type" + goTo).removeClass("hideskill");
+    }
+
+    function toggleSidebar(){
+      if($(window).width()<451){ if(navOpen) closeNav(); else openNav();}
     }
   </script>
 </body>
