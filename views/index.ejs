@@ -19,7 +19,9 @@
 </head>
 
 <body style="position: relative;">
-  <div style="position: absolute; height: 100%;"><img class="moneyshot" src="/src/Portraitdarker.png" style="height:100%; transition: ease-in 1s"></div>
+  <div style="position: absolute; height: 100%; overflow-x: hidden;">
+    <img class="moneyshot" src="/src/Portraitdarker.png" style="height:100%; transition: ease-in 1s">
+  </div>
   <div id="mySidenav" class="sidenav">
     <div class="posWrapper hidden">
       <div><img class="portrait" src="/src/profile.jpg"></div>
@@ -161,7 +163,7 @@
           </p>
           <p>
           <ul>
-            <% checker = false; for(let i = 0; i < jobscope.length; i++) { %> 
+            <% checker = false; for(let i = 0; i < jobscope.length; i++) { %>
             <% if(count+1 == jobscope[i].id_job) {%>
             <li>
               <%= jobscope[i].scope %>
@@ -255,8 +257,8 @@
       setTimeout(() => {
         $("#mySidenav").removeClass("openNavSide");
         $("#main").removeClass("openNavMain");
-        if($(window).width()>450){
-        window.scrollTo(0, 0);
+        if ($(window).width() > 450) {
+          window.scrollTo(0, 0);
         }
       }, 200);
       setTimeout(() => {
@@ -282,7 +284,7 @@
       var topScreen = $(window).scrollTop();
       if (!navOpen) {
         // window.alert("TopTitle: " + topTitle + "topScreen: " + topScreen + "topAbt: " + topAbt + "botScreen: " + botScreen);
-        if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol && $(window).width()>450 ) {
+        if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol && $(window).width() > 450) {
           openNav();
           scrol = true;
           $('body').addClass('stop-scrolling');
@@ -294,12 +296,12 @@
             scrol = false;
           }, 800);
 
-        } else if (topAbt <= botScreen && !scrol && $(window).width()>450 ) {
+        } else if (topAbt <= botScreen && !scrol && $(window).width() > 450) {
           openNav();
         }
 
 
-      } else if (topAbt >= botScreen && !scrol && $(window).width()>450 ) {
+      } else if (topAbt >= botScreen && !scrol && $(window).width() > 450) {
         closeNav();
 
       }
@@ -337,8 +339,11 @@
       $(".type" + goTo).removeClass("hideskill");
     }
 
-    function toggleSidebar(){
-      if($(window).width()<451){ if(navOpen) closeNav(); else openNav();}
+    function toggleSidebar() {
+      if ($(window).width() < 451) {
+        if (navOpen) closeNav();
+        else openNav();
+      }
     }
   </script>
 </body>
