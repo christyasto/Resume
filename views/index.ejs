@@ -83,7 +83,7 @@
           <div class="col-lg-2 col-1">
             <h5>ABOUT</h5>
           </div>
-          <div class="col-lg-7" style="text-align: justify;">
+          <div class="col-lg-7 aboutDesc" style="text-align: justify; text-justify: inter-character;">
             <p>A designer, possessing a good background in CAD (Computer-Aided Design) and several programming languages, with a strong interest in the interplay between design, fabrication, and computation. A hardworking, forward-looking individual with a desire to
               serve. Always looking forward to learning a new trade!</p>
           </div>
@@ -247,6 +247,7 @@
         $(".posWrapper").removeClass("hidden");
       }, 100);
       $(".moneyshot").addClass("flatside");
+      if($(window).width() < 451) $(".aboutDesc").css("text-align","center");
     }
 
     /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -267,7 +268,7 @@
         scrol = false;
       }, 1000);
       $(".moneyshot").removeClass("flatside");
-
+      if($(window).width() < 451) $(".aboutDesc").css("text-align","justify");
     }
 
     $(".Hover").hover(function() {
