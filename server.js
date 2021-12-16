@@ -43,7 +43,6 @@ app.get('/', function (req, res) {
             res.render('index', { skills, workexp, jobscope, compet });
         }
     })
-
 })
 
 app.listen(port)
