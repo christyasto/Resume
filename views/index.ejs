@@ -30,33 +30,35 @@
         <h5 style="margin-bottom: 20px">PROFICIENCIES</h5>
         <div class="skillType">
           <div class="skillHeader">
-            <i class="fas fa-greater-than" onclick="headerClick(1);"></i>
+            <i class="fas fa-less-than" onclick="headerClick(1);"></i>
             <h6 style="transition: opacity 0.15s;" class="sHeader Head0">Programming</h6>
-            <i class="fas fa-less-than" style="text-align: right;" onclick="headerClick(-1);"></i>
+            <i class="fas fa-greater-than" style="text-align: right;" onclick="headerClick(-1);"></i>
           </div>
           <% skills.forEach(skillSet => { %>
           <div style="transition: opacity 1s;" class="skill type<%=skillSet.category - 1%> <%if(skillSet.category - 1!=0){%>hideskill<%}%>">
                                 <%=skillSet.desc%><br/>
-                                    <% for( let j = 0; j < 10; j++ ) { %>
-                                        <% if (j < 10 - skillSet.lvl) { %> <i class=" far fa-circle"></i>
+                                <div style=" direction: rtl !important;">
+            <% for( let j = 0; j < 10; j++ ) { %>
+            <% if (j < 10 - skillSet.lvl) { %> <i class=" far fa-circle"></i>
             <% } else { %><i class="fas fa-circle"></i>
             <% } %>
             <% }%>
           </div>
-          <%}) %>
         </div>
-
+        <%}) %>
       </div>
 
-      <div class="navigCont">
-        <div class="sideContent">
-          <a class="navigText abt" href="#about"><i class="fas fa-quote-left"></i> <i class="fas fa-quote-right"></i></a>
-          <a class="navigText" href="#education"><i class="fas fa-user-graduate"></i></a>
-          <a class="navigText" href="#workExp"><i class="fas fa-briefcase"></i></a>
-          <a class="navigText" href="#awards"><i class="fas fa-trophy"></i></a>
-        </div>
+    </div>
+
+    <div class="navigCont">
+      <div class="sideContent">
+        <a class="navigText abt" href="#about"><i class="fas fa-quote-left"></i> <i class="fas fa-quote-right"></i></a>
+        <a class="navigText" href="#education"><i class="fas fa-user-graduate"></i></a>
+        <a class="navigText" href="#workExp"><i class="fas fa-briefcase"></i></a>
+        <a class="navigText" href="#awards"><i class="fas fa-trophy"></i></a>
       </div>
     </div>
+  </div>
   </div>
 
   <div id="main" style="height: 100%;" onclick="toggleSidebar();">
@@ -225,7 +227,7 @@
               <% } %>
             </sm>
           </p>
-          
+
         </div>
         <% count++; }) %>
       </div>
@@ -248,7 +250,7 @@
         $(".posWrapper").removeClass("hidden");
       }, 100);
       $(".moneyshot").addClass("flatside");
-      if($(window).width() < 451) $(".aboutDesc").css("text-align","center");
+      if ($(window).width() < 451) $(".aboutDesc").css("text-align", "center");
     }
 
     /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
@@ -269,7 +271,7 @@
         scrol = false;
       }, 1000);
       $(".moneyshot").removeClass("flatside");
-      if($(window).width() < 451) $(".aboutDesc").css("text-align","justify");
+      if ($(window).width() < 451) $(".aboutDesc").css("text-align", "justify");
     }
 
     $(".Hover").hover(function() {
