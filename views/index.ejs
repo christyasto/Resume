@@ -25,29 +25,30 @@
   </div>
   <div id="mySidenav" class="sidenav">
     <div class="posWrapper hidden">
-      <div><img class="portrait" src="/src/profile.jpg"></div>
-      <div class="skills col-lg-2">
-        <h5 style="margin-bottom: 20px">PROFICIENCIES</h5>
-        <div class="skillType">
-          <div class="skillHeader">
-            <i class="fas fa-less-than" onclick="headerClick(1);"></i>
-            <h6 style="transition: opacity 0.15s;" class="sHeader Head0">Programming</h6>
-            <i class="fas fa-greater-than" style="text-align: right;" onclick="headerClick(-1);"></i>
-          </div>
-          <% skills.forEach(skillSet => { %>
-          <div style="transition: opacity 1s;" class="skill type<%=skillSet.category - 1%> <%if(skillSet.category - 1!=0){%>hideskill<%}%>">
+      <div class="dpHolder" onclick="closeNav();"><img class="portrait" src="/src/profile.jpg"></div>
+      <div class="skillHolder">
+        <div class="skills col-lg-2">
+          <h5 style="margin-bottom: 20px">PROFICIENCIES</h5>
+          <div class="skillType">
+            <div class="skillHeader">
+              <i class="fas fa-less-than" onclick="headerClick(1);"></i>
+              <h6 style="transition: opacity 0.15s;" class="sHeader Head0">Programming</h6>
+              <i class="fas fa-greater-than" style="text-align: right;" onclick="headerClick(-1);"></i>
+            </div>
+            <% skills.forEach(skillSet => { %>
+            <div style="transition: opacity 1s;" class="skill type<%=skillSet.category - 1%> <%if(skillSet.category - 1!=0){%>hideskill<%}%>">
                                 <%=skillSet.desc%><br/>
                                 <div style=" direction: rtl !important;">
-            <% for( let j = 0; j < 10; j++ ) { %>
-            <% if (j < 10 - skillSet.lvl) { %> <i class=" far fa-circle"></i>
-            <% } else { %><i class="fas fa-circle"></i>
-            <% } %>
-            <% }%>
+              <% for( let j = 0; j < 10; j++ ) { %>
+              <% if (j < 10 - skillSet.lvl) { %> <i class=" far fa-circle"></i>
+              <% } else { %><i class="fas fa-circle"></i>
+              <% } %>
+              <% }%>
+            </div>
           </div>
+          <%}) %>
         </div>
-        <%}) %>
       </div>
-
     </div>
 
     <div class="navigCont">
@@ -243,35 +244,57 @@
     var scrol = false;
     /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
     function openNav() {
-      $("#mySidenav").addClass("openNavSide");
-      $("#main").addClass("openNavMain");
-      navOpen = true;
-      setTimeout(() => {
-        $(".posWrapper").removeClass("hidden");
-      }, 100);
-      $(".moneyshot").addClass("flatside");
-      if ($(window).width() < 451) $(".aboutDesc").css("text-align", "center");
+      if ($(window).height() < 512) {
+        $("#mySidenav").addClass("openNavSideFULL");
+        $("#main").addClass("openNavMainFULL");
+        navOpen = true;
+        $(".posWrapper").addClass("wrapFULL");
+        setTimeout(() => {
+          $(".posWrapper").removeClass("hidden");
+        }, 100);
+      } else {
+        $("#mySidenav").addClass("openNavSide");
+        $("#main").addClass("openNavMain");
+        navOpen = true;
+        setTimeout(() => {
+          $(".posWrapper").removeClass("hidden");
+        }, 100);
+        $(".moneyshot").addClass("flatside");
+      }
+      if ($(window).width() < 451 || $(window).height() < 451) $(".aboutDesc").css("text-align", "center");
     }
 
     /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
     function closeNav() {
-      $(".posWrapper").addClass("hidden");
-      navOpen = false;
-      scrol = true;
-      $('body').addClass('stop-scrolling')
-      setTimeout(() => {
-        $("#mySidenav").removeClass("openNavSide");
-        $("#main").removeClass("openNavMain");
-        if ($(window).width() > 450) {
-          window.scrollTo(0, 0);
-        }
-      }, 200);
-      setTimeout(() => {
-        $('body').removeClass('stop-scrolling');
-        scrol = false;
-      }, 1000);
-      $(".moneyshot").removeClass("flatside");
-      if ($(window).width() < 451) $(".aboutDesc").css("text-align", "justify");
+      if ($(window).height() < 512) {
+        $(".posWrapper").addClass("hidden");
+        navOpen = false;
+        setTimeout(() => {
+          $("#mySidenav").removeClass("openNavSideFULL");
+          $("#main").removeClass("openNavMainFULL");
+        }, 200);
+        setTimeout(() => {
+          $(".posWrapper").removeClass("wrapFULL");
+        }, 300);
+      } else {
+        $(".posWrapper").addClass("hidden");
+        navOpen = false;
+        scrol = true;
+        $('body').addClass('stop-scrolling')
+        setTimeout(() => {
+          $("#mySidenav").removeClass("openNavSide");
+          $("#main").removeClass("openNavMain");
+          if ($(window).width() > 450 && $(window).height() > 512) {
+            window.scrollTo(0, 0);
+          }
+        }, 200);
+        setTimeout(() => {
+          $('body').removeClass('stop-scrolling');
+          scrol = false;
+        }, 1000);
+        $(".moneyshot").removeClass("flatside");
+      }
+      if ($(window).width() < 451 || $(window).height() < 451) $(".aboutDesc").css("text-align", "justify");
     }
 
     $(".Hover").hover(function() {
@@ -289,7 +312,7 @@
       var topScreen = $(window).scrollTop();
       if (!navOpen) {
         // window.alert("TopTitle: " + topTitle + "topScreen: " + topScreen + "topAbt: " + topAbt + "botScreen: " + botScreen);
-        if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol && $(window).width() > 450) {
+        if (topScreen > topTitle && topScreen - topTitle < 200 && !scrol && $(window).width() > 450 && $(window).height() > 521) {
           openNav();
           scrol = true;
           $('body').addClass('stop-scrolling');
@@ -301,12 +324,12 @@
             scrol = false;
           }, 800);
 
-        } else if (topAbt <= botScreen && !scrol && $(window).width() > 450) {
+        } else if (topAbt <= botScreen && !scrol && $(window).width() > 450 && $(window).height() > 521) {
           openNav();
         }
 
 
-      } else if (topAbt >= botScreen && !scrol && $(window).width() > 450) {
+      } else if (topAbt >= botScreen && !scrol && $(window).width() > 450 && $(window).height() > 521) {
         closeNav();
 
       }
@@ -345,7 +368,9 @@
     }
 
     function toggleSidebar() {
-      if ($(window).width() < 451) {
+      console.log(`width: ${$(window).width()}, height: ${$(window).height()}`);
+      if ($(window).width() < 451 || $(window).height() < 521) {
+        console.log("bleh");
         if (navOpen) closeNav();
         else openNav();
       }
