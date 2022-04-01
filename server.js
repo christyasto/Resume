@@ -4,7 +4,7 @@ const mysql = require('mysql');
 
 const fs = require('fs')
 var data = fs.readFileSync('credentials.txt', 'utf8').split(',');
-var host = data[0],user = data[1],pass = data[2], db = data[3];
+var host = data[0], user = data[1], pass = data[2], db = data[3];
 
 var app = express();
 
@@ -25,7 +25,7 @@ const connection = mysql.createConnection({
 setInterval(function () {
     connection.query('SELECT 1');
     console.log("tick");
-    }, 10800000);
+}, 1 * 3600 * 1000);
 
 // View engine
 app.set('views', path.join(__dirname, 'views'));
