@@ -37,9 +37,9 @@ app.get('/', function (req, res) {
         if (error) throw error;
         if (!error) {
             let skills = results[0];
-            let workexp = results[1];
-            let jobscope = results[2];
-            let compet = results[3];
+            let workexp = results[1].slice().reverse();
+            let jobscope = results[2].slice().reverse();
+            let compet = results[3].slice().reverse();
             res.render('index', { skills, workexp, jobscope, compet });
         }
     })
