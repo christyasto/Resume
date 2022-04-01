@@ -21,7 +21,6 @@ const connection = mysql.createConnection({
     multipleStatements: true
 })
 
-
 // Force mysql to keep connection alive every 3 hours
 setInterval(function () {
     connection.query('SELECT 1');
