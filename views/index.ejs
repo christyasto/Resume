@@ -152,9 +152,9 @@
           <h5>WORK EXPERIENCE</h5>
         </div>
         <!-- EDIT: work line 1 -->
-        <% var count = 0; %>
-        <% workExp.forEach(exp => { %>
-        <% if (count != 0) { %>
+        <% var count = workexp.length -1; %>
+        <% workexp.forEach(exp => { %>
+        <% if (count != workexp.length -1) { %>
 
         <div class="col-lg-2"></div>
         <% } %>
@@ -185,7 +185,7 @@
             </sm>
           </p>
         </div>
-        <% count++; }) %>
+        <% count--; }) %>
       </div>
       <!--/.row -->
       <br>
