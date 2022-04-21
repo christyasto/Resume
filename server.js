@@ -22,7 +22,6 @@ function handleDisconnect() {
         database: db,
         multipleStatements: true
     })
-
     connection.connect(function (err) {                 // The server is either down
         if (err) {                                      // or restarting (takes a while sometimes).
             console.log('error when connecting to db:', err);
