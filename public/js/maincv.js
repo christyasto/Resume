@@ -60,7 +60,6 @@ function closeNav() {
 $(document).ready(function () {
   $(".Hover").hover(
     function () {
-      console.log("asdasd");
       $("." + $(this).attr("class").split(" ")[1].toString()).css(
         "background-color",
         "#cbcbcb"
